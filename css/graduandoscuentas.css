@@ -1,0 +1,288 @@
+*{	
+	margin: 0;
+	padding: 0;
+	-webkit-box-sizing:border-box;
+    -moz-box-sizing:border-box;
+    box-sizing:border-box;
+}
+
+
+
+body{		
+	background: #000;
+	color: #fff;
+	font-family: 'Opens Sans', sans-serif;
+	font-weight: 300; 
+}
+
+
+
+/*clase padre ESENCIAL*/
+.contenedor{	
+	background: #A3ADB1; 	
+	width: 90%;
+	max-width: 1000px;
+	margin: auto;
+}
+
+.error{
+	color: red;
+	border: 1px solid;
+}
+/*HEADER*/
+
+header{
+	text-align: center;
+	margin-bottom: 50px;
+	padding: 30px;	
+	background: #152932;
+	height: 100px;	
+}
+
+header h3{
+	text-align: center;
+	font-weight: normal;
+}
+
+.datos {		
+	margin-bottom: 50px;	
+}
+
+.datos .bienvenida{	
+	background: #152932;
+	padding: 20px;
+	margin-bottom: 50px;
+	text-align: center;	
+}
+
+
+
+.datos .subtitulo{
+	text-align: left;
+	padding: 20px;
+	background: #152932;
+}
+
+
+.datos label{	
+	font-weight: bold;
+	background: #152932;
+}
+
+.datos label:hover{
+	color: #ff9f1c;
+
+}
+
+input[type="submit"]{
+
+	margin-top: 20px;
+	margin-bottom: 20px; 
+	font-weight: bold;
+	padding: 10px;
+	background: #f25724;
+	border: none;
+	color: #fff;
+	width: 20%;
+	-webkit-transition: all 900ms ease;
+	-o-transition: all 900ms ease;
+	transition: all 900ms ease;
+}
+
+input[type="submit"]:hover{
+	cursor: pointer;
+	border-radius: 50px;
+	background: #ff9f1c;	
+}
+
+nav{	
+	padding: 16px;
+	background: #152932;	
+	width: 100%;
+	max-width: 1000px;
+	font-weight: bold
+}
+
+nav ul{
+	list-style: none;
+}
+
+nav > ul{
+	display: table;
+	overflow: hidden;
+	width: 16%;
+	background: #00171f;
+	position: relative;
+}
+
+nav > ul li{
+	display: table-cell;
+}
+
+nav > ul li a{
+	color: #fff;
+	display: block;
+	line-height: 20px;
+	padding: 20px;
+	position: relative;
+	text-align: center;
+	text-decoration: none;
+	-webkit-transition: all .3s ease;
+	-moz-transition: all .3s ease;
+	-ms-transition: all .3s ease;
+	-o-transition: all .3s ease;
+	transition: all .3s ease;
+}
+
+nav > ul > li > ul > li a:hover{
+	background: #5da5a2;
+}
+
+nav > ul > li > a span{
+	background: #174459;
+	display: block;
+	height: 100%;
+	width: 100%;
+	left: 0;
+	position: absolute;
+	top: -55px;
+	-webkit-transition: all .3s ease;
+	-moz-transition: all .3s ease;
+	-ms-transition: all .3s ease;
+	-o-transition: all .3s ease;
+	transition: all .3s ease;
+}
+
+nav > ul > li > a span .icon{
+	display: block;
+	line-height: 60px;
+}
+
+nav > ul > li > a:hover > span{
+	top:0;
+}
+
+/*color boton modificar*/
+nav ul li a .color1{
+	background: #37a4d9;
+}
+
+.datos label{
+	padding: 20px;
+	text-align: left;
+	line-height: 50px;
+	display: block;
+}
+
+
+
+/*MAIN*/
+.main{
+	width: 100%;
+	margin: 0 auto;
+}
+
+.main h3{
+	text-align: center;
+	padding: 20px;
+	background: #152932;
+}
+
+.main form{
+	background: #152932;
+}
+.main form select{
+	padding: 5px;
+	margin-left: 20px;
+}
+
+/*tabla*/
+.tabla{
+	background: #152932;	
+	margin-bottom: 50px;	
+	text-align: center;
+	width: 100%;
+	padding: 30px;
+}
+
+table{
+	margin: 0 auto;
+	margin-left: 10px;
+	margin-right: 5px;
+	font-weight: bold;
+	border: 1px solid #fff;
+	border-collapse: collapse;
+}
+
+table td{
+	border: 1px solid #fff;
+	padding: 20px;
+}
+
+table td:hover{
+	background: #000;		
+}
+
+/*FOOTER*/
+footer{
+	text-align: left;
+	line-height: 30px;
+}
+footer p{
+	padding: 10px;
+}
+
+footer .sub-footer{
+	padding: 20px;
+	background: #152932;
+}
+
+footer .negativo{
+	color: red;
+	font-weight: bold;
+}
+
+footer .positivo{
+	color: blue;
+	font-weight: bold;
+}
+
+footer .sub-info{		
+	text-align: center;	
+	padding: 20px;
+	background: #152932;		
+}
+
+
+
+footer .informacion{
+	color: #fff;
+	padding: 20px;
+	margin-bottom: 50px;	
+	font-weight: bold;
+	background: #152932;
+}
+
+
+
+footer .felicitar{
+	text-align: center;
+	background: #152932;
+	padding: 20px;
+	margin-bottom: 50px;
+}
+
+footer .icon-graduation-cap{
+	margin-right: 10px;
+	margin-left: 10px;
+}
+
+footer nav ul {
+	margin: 20px auto;
+		
+}
+
+/*color boton salir*/
+nav ul li a .color2{
+	background: #f25724;
+}

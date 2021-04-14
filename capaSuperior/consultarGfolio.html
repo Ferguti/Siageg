@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<!-- interfaz de control de estudio para consultar documentos existentes en los expedientes, actualizarlos
+y verificar estadisticas en la totalización de graduandos -->
+<head>
+	<title>Consultar graduandos</title>
+	<meta charset="UTF-8">	
+	<meta name="description" content="Pagina web para graduandos de la UPTBAL">
+	<meta name="keywords" content="graduandos, uptbal">
+	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximun-scale=1.0, minimun-scale=1.0">	
+	<script src="http://code.jquery.com/jquery-latest.js"></script>	
+	<script src="../js/prefixfree.min.js"></script>		
+	<link rel="shorcut icon" type="image/x-icon" href="../imagenes/favicon.ico">
+	<link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,600,600italic,400italic' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" href="../css/consultasGrad.css">	
+	<link rel="stylesheet" href="../css/entypo/fonts.css">	    
+	<link rel="stylesheet" href="../css/flexboxgrid.min.css">
+	<script src"http://code.jquery.com/jquery-latest.min.js"></script>
+</head>
+
+<body>
+
+
+	<?php
+		include('../capaInferior/claseEstudiante.php');
+		session_start();
+		$_SESSION['ci'];
+		$_SESSION['pnf'];
+		$_SESSION['nombres']; 
+		$_SESSION['apellidos'];
+		$_SESSION['titulo'];	
+			
+	 ?>		
+		<div class="contenedor">
+		<header>
+			<h3>CONSULTA DE GRADUANDOS</h3>	
+		</header>
+
+		<div class="logo">
+			<div class="container">
+				<div class="row center-xs">
+					<div class="imagenes col-xs-">
+						<div class="thumb">
+							<img src="../imagenes/logo.jpg" alt="Logo UPTBAL" title="Logo de la UPTBAL">
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<section class="main">
+			<div class="label">			
+			
+			<form name="formulario" id="formulario" action="../capaIntermedia/registro.php?modo=folio" method="POST">
+			<label>PNF: <?php echo $_SESSION['pnf'];?> </label>
+			<label>Titulo: <?php echo $_SESSION['titulo'];?></label>
+			<div class="tabla" name="ci">
+				<table>														
+						<tr class = "centro">
+							<td>Cedula</td>
+							<td>Nombres completos</td>													
+							<td>Nro Folio</td>								
+							<td>Indice. A</td>
+						</tr>
+						<tbody>	
+						<?php { ?>					
+							<tr>
+								<td><?php echo $_SESSION['ci']; ?></td>
+								<td><?php echo $_SESSION['nombres']." ". $_SESSION['apellidos']; ?></td>															
+								<td><input type="text" name="folio" id="folio" placeholder="Nro. Folio" maxlength="4"></td>								
+								<td><input type="text" name="indice" id="indice" placeholder="Índice Acad" maxlength="4"></td>
+							</tr>
+
+							<style>
+								table{	
+									margin-bottom: 100px;
+								}
+							</style>
+							<?php } ?>
+						</tbody>	
+				</table>				
+			</div>	
+ 			 		
+			<input type="hidden" value="1" name="fol">
+			<input type="submit" value="GUARDAR">
+			</form>
+		</section>
+
+		
+
+		<footer>			
+			<nav class="bt-salir">
+				<ul>
+					<li><a href="../capaSuperior/sesionSec.php"><span class="color6"><i class="icon icon-back"></i></span>Volver</a></li>
+				</ul>
+			</nav>
+		</footer>
+		
+	
+	
+</div>
+
+<script src="../js/consultarGradfolio.js"></script>
+</body>

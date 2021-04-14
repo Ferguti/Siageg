@@ -1,0 +1,177 @@
+
+<!DOCTYPE html>
+<html lang="es">
+
+<!-- interfaz de control de estudio para consultar documentos existentes en los expedientes, actualizarlos
+y verificar estadisticas en la totalización de graduandos -->
+<head>
+	<title>Control de estudio</title>
+	<meta charset="UTF-8">	
+	<meta name="description" content="Pagina web para graduandos de la UPTBAL">
+	<meta name="keywords" content="graduandos, uptbal">
+	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximun-scale=1.0, minimun-scale=1.0">	
+	<script src="http://code.jquery.com/jquery-latest.js"></script>		
+	<script src="../js/prefixfree.min.js"></script>
+	<link rel="shorcut icon" type="image/x-icon" href="../imagenes/favicon.ico">
+	<link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,600,600italic,400italic' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" href="../css/conExpGrad.css">	
+	<link rel="stylesheet" href="../css/entypo/fonts.css">	    
+	<link rel="stylesheet" href="../css/flexboxgrid.min.css">
+	<script src"http://code.jquery.com/jquery-latest.min.js"></script>
+</head>
+
+<body>
+
+
+	<?php
+		// include("../capaInferior/conexion.php");
+		include('../capaInferior/claseEstudiante.php');
+		session_start();
+		if(isset($_SESSION['ci'])){
+				$_SESSION['ci'];
+				$_SESSION['nombres'];
+				$_SESSION['apellidos']; 
+				$_SESSION['titulo'];
+				$_SESSION['fn'];
+				$_SESSION['fotos']; 
+				$_SESSION['nc'];
+				$_SESSION['pn'];
+				$_SESSION['cc'];
+				$_SESSION['sa'];
+		}else{
+			header('location: ../index.php?**ERROR**=ACCESO DENEGADO');
+			exit();
+		}
+			
+	?>
+	<div class="contenedor">
+		<header>
+			<h3>EXPEDIENTE DEL GRADUANDO</h3>
+		</header>
+
+		<section class="main">	
+		<div class="buscador">		
+			<form name="formulario" id="formulario" action="../capaIntermedia/consultar.php?modo=expediente" method="POST">
+				<label for="cedula">Buscar graduando:</label>
+				<input type="text" name="cedula" id="cedula" placeholder="Cédula graduando" maxlength="8"> 
+				<input type ="submit" name="buscar" id="buscar" value="Buscar"> 
+				<input type="hidden" value="1" name="expediente">
+			</form>		
+		</div>				
+		  
+			<div class="infoExpe">
+				<label>Datos del expediente</label>
+				<label>C.I: <?php echo($_SESSION['ci']);?></label>
+				<label>Nombres: <?php echo($_SESSION['nombres']);?></label>
+				<label>Apellidos: <?php echo($_SESSION['apellidos']);?></label>
+				<label>Titulo: <?php echo($_SESSION['titulo']);?></label>
+				<label>PNF: <?php echo($_SESSION['pnf']);?></label>	
+			</div>	
+			
+			<!-- tabla 1 para consultar documentos existentes en el expediente del graduando -->
+			<div class="tabla">
+				<table>
+					<!-- fila 1 -->
+					<tr>
+						<td>Fotos</td>
+						<td>Fondo negro</td>
+						<td>Notas certificadas</td>
+						<td>Copia C.I</td>
+						<td>Partida de nacimiento</td>
+						<td>Solvencia académica</td>
+					</tr>
+
+					<!-- fila 2 -->
+					<tr>
+						<td><?php echo($_SESSION['fotos']); ?></td>						
+						<td><?php echo($_SESSION['fn']); ?></td>						
+						<td><?php echo($_SESSION['nc']); ?></td>
+						<td><?php echo($_SESSION['cc']); ?></td>
+						<td><?php echo($_SESSION['pn']); ?></td>
+						<td><?php echo($_SESSION['sa']); ?></td>
+					</tr>
+				</table>
+			</div>
+		
+			
+			<!-- tabla 2 para seleccionar documentos existentes en el expediente-->
+			<div class="tname">
+				<label>Tabla de actualización de expediente</label>
+			</div>
+			<div class="tabla">		
+				
+				<form name="formulario" id="form" action="../capaIntermedia/registro.php?modo=expediente"  method="POST">
+				<?php $_SESSION['ci']; ?>	
+				<input type="hidden" name="expediente" value="1">
+				<table>
+					<!-- fila 1 -->
+					<tr>
+						<td>Fotos</td>
+						<td>Fondo negro</td>
+						<td>Notas certificadas</td>
+						<td>Copia C.I</td>
+						<td>Partida de nacimiento</td>
+						<td>Solvencia académica</td>
+					</tr>
+
+					<!-- fila 2 -->
+					<tr>
+						<td><select name="fotos" id="fotos">
+							<option>Seleccione...</option>
+							<option>SI</option>
+							<option>NO</option>
+						</select>
+						</td>
+						<td><select name="fn" id="fn">
+							<option>Seleccione...</option>
+							<option>SI</option>
+							<option>NO</option>
+						</select>
+						</td>
+						<td><select name="nc" id="nc">
+							<option>Seleccione...</option>
+							<option>SI</option>
+							<option>NO</option>
+						</select>
+						</td>
+						<td><select name="cc" id="cc">
+							<option>Seleccione...</option>
+							<option>SI</option>
+							<option>NO</option>
+						</select>
+						</td>
+						<td><select name="pn" id="pn">
+							<option>Seleccione...</option>
+							<option>SI</option>
+							<option>NO</option>
+						</select>
+						</td>
+						<td><select name="sa" id="sa">
+							<option>Seleccione...</option>
+							<option>SI</option>
+							<option>NO</option>
+						</select>
+						</td>
+					</tr>					
+				</table>
+			<div class="guardar">
+				<input type="submit" name="guardar" id="guardar" value="Guardar">
+			</div>
+
+			</div>
+			</form>
+		</section>
+
+		<footer>			
+			
+			<nav class="bt-salir">
+				<ul>
+					<li><a href="http://localhost/Siageg/capaSuperior/cde.php"><span class="color6"><i class="icon icon-back"></i></span>Volver</a></li>
+				</ul>
+			</nav>
+		</footer>
+		
+	</div>
+
+	<script src="../js/conExpGrad.js"></script> 
+</body>
